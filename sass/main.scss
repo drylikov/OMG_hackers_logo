@@ -1,0 +1,208 @@
+// colors
+$bg-color: #000;
+$logo-color: #f65736;
+
+// sizes
+$square-deg: 0;
+
+// mixin
+@mixin center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+@mixin pseudo($position: absolute, $content: "") {
+    content: $content;
+    position: $position;
+}
+
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+body {
+    @include center;
+    background: $bg-color;
+    overflow: hidden;
+}
+
+.logo{
+  @include center;
+  width: 61vmin;
+  height: 61vmin;
+  background: $logo-color;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 4vmin $logo-color);
+
+  .square-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .square{
+      position: absolute;
+      width: 4vmin;
+      height: 4.5vmin;
+      top: 0vmin;
+      left: 29vmin;
+      background: $bg-color;
+      transform-origin: 1.5vmin 30.5vmin;
+      filter: drop-shadow(0 0 4vmin $logo-color);
+
+    }
+
+    @for $i from 1 through 6 {
+      .square-#{$i} {
+          transform: rotate($square-deg);
+      }
+      $square-deg: $square-deg+60deg;
+    }
+  }
+
+  .inner{
+    @include center;
+    width: 45vmin;
+    height: 45vmin;
+    background: $bg-color;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 4vmin $logo-color);
+
+
+    .horm-left{
+      position: absolute;
+      left: 11.5vmin;
+      top: 6vmin;
+      width: 3vmin;
+      height: 5vmin;
+      background: $logo-color;
+      border-bottom-left-radius: 2vmin;
+      transform: rotate(45deg);
+
+      &:after{
+        @include pseudo;
+        top: -2vmin;
+        left: 0.4vmin;
+        top: -1.6vmin;
+        width: 5vmin;
+        height: 5vmin;
+        background: $bg-color;
+        border-bottom-left-radius: 2vmin;
+        transform: rotate(-20deg);
+      }
+    }
+
+    .horm-right{
+      position: absolute;
+      right: 11.5vmin;
+      top: 6.5vmin;
+      width: 4vmin;
+      height: 5vmin;
+      background: $logo-color;
+      border-top-right-radius: 2vmin;
+      transform: rotate(45deg);
+
+      &:after{
+        @include pseudo;
+        top: -2vmin;
+        left: -2.6vmin;
+        top: 0.2vmin;
+        width: 5vmin;
+        height: 5vmin;
+        background: $bg-color;
+        border-top-right-radius: 2vmin;
+        transform: rotate(20deg);
+      }
+    }
+
+
+    .head{
+      @include center;
+      width: 30vmin;
+      height: 13.5vmin;
+      overflow: hidden;
+      background: $logo-color;
+      top: -18.5vmin;
+      border-top-left-radius: 15vmin;
+      border-top-right-radius: 15vmin;
+
+      .eye-left{
+        @include center;
+        overflow: hidden;
+        top: 1.2vmin;
+        left: -12.5vmin;
+        width: 3vmin;
+        height: 3vmin;
+        border-radius: 50%;
+        background: $bg-color;
+      }
+
+      .eye-right{
+        @include center;
+        overflow: hidden;
+        top: 2.5vmin;
+        right: -15.2vmin;
+        width: 5vmin;
+        height: 3vmin;
+        border-bottom-left-radius: 5vmin;
+        border-bottom-right-radius: 4vmin;
+        background: $bg-color;
+        transform: rotate(5deg);
+      }
+
+      .eye-right-line{
+        @include center;
+        width: 30vmin;
+        height: 30vmin;
+        left: 8vmin;
+        top: -30.5vmin;
+        background: $logo-color;
+        border: 1vmin solid $bg-color;
+        border-right: none;
+        border-radius: 50%;
+        transform: rotate(10deg);
+      }
+    }
+
+    .skull{
+        @include center;
+        height: 25vmin;
+        width: 3.5vmin;
+        background: $logo-color;
+
+        &:before{
+          @include pseudo;
+          width: 5vmin;
+          height: 5vmin;
+          background: $logo-color;
+          top: -4vmin;
+          left: -0.6vmin;
+          border-radius: 50%;
+        }
+        &:after{
+          @include pseudo;
+          width: 5vmin;
+          height: 5vmin;
+          background: $logo-color;
+          bottom: -4vmin;
+          left: -0.6vmin;
+          border-radius: 50%;
+        }
+    }
+
+    .skull-1{
+      top: 11vmin;
+      transform: rotate(72deg);
+    }
+    .skull-2{
+      top: 11vmin;
+      transform: rotate(-72deg);
+    }
+
+  }
+}
